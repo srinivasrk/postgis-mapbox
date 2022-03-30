@@ -1,0 +1,40 @@
+version: '2'
+volumes:
+  postgres_vol:
+
+services:
+  postgres:
+    image: postgis/postgis:13-master
+    container_name: postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    environment:
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=postgres
+    - POSTGRES_DB=postgres
+    volumes:
+    - postgres_vol:/var/lib/postgresql/data
+    ports:
+    - 5432:5432
+  
+  app:
+    image: myapp
+    container_name: app
+    depends_on: 
+    - postgres
+    ports:
+    - "8080:8080"
+  
+  gdal:
+    image: osgeo/gdal
+    container_name: gdal
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+    - ./countries.geojson:/root/countries.geojson
+    tty: true
+    command: ogr2ogr -f "PostgreSQL" PG:"host=postgres dbname=postgres user=postgres password=postgres" "/root/countries.geojson" -nln countries
