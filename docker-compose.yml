@@ -35,6 +35,6 @@ services:
       postgres:
         condition: service_healthy
     volumes:
-    - ./countries.geojson:/root/countries.geojson
+    - ./data/countries.geojson:/root/countries.geojson
     tty: true
     command: ogr2ogr -f "PostgreSQL" PG:"host=postgres dbname=postgres user=postgres password=postgres" "/root/countries.geojson" -nln countries

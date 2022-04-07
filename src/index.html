@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Add a vector tile source</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js"></script>
+<style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+	// TO MAKE THE MAP APPEAR YOU MUST
+	// ADD YOUR ACCESS TOKEN FROM
+	// https://account.mapbox.com
+mapboxgl.accessToken = '';
+const map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/mapbox/light-v10',
+  zoom: 13,
+  center: [-122.447303, 37.753574]
+});
+
+map.on('load', () => {
+  map.addSource('countries', {
+    type: 'vector',
+    // Use any Mapbox-hosted tileset using its tileset id.
+    // Learn more about where to find a tileset id:
+    // https://docs.mapbox.com/help/glossary/tileset-id/
+    tiles: ['http://localhost:8080/tiles/{z}/{x}/{y}.mvt']
+  });
+  map.addLayer({
+    'id': 'countries-boundary',
+    'type': 'line',
+    'source': 'countries',
+    'source-layer': 'default',
+    'paint': {
+      'line-color': '#ff69b4',
+      'line-width': 1
+    }
+  });
+});
+</script>
+
+</body>
+</html>

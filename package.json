@@ -1,5 +1,19 @@
 {
+  "name": "postgis-mapbox",
+  "version": "0.0.1",
+  "description": "Generate mapbox tiles from PostGIS",
+  "main": "src/index.js",
   "dependencies": {
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "pg": "^8.7.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-jsdoc": "^28.7.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-standard": "^4.0.1"
   }
 }
