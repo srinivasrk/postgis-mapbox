@@ -13,7 +13,7 @@ const SOURCE_LAYER_BASE = "roads_base";
 const SOURCE_LAYER_TRAFFIC = "traffic_roads";
 
 /** Seconds for one full sweep through all frames (lower = faster playback). */
-const PLAY_LOOP_SECONDS = 12;
+const PLAY_LOOP_SECONDS = 24;
 
 /** Mock traffic rush/quiet hours are defined in Seattle local time. */
 const SEATTLE_TZ = "America/Los_Angeles";
