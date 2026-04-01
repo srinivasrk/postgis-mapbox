@@ -1,0 +1,3 @@
+# `timescale/timescaledb` is Alpine-based (no apt-get). The HA "all-oss" image bundles
+# TimescaleDB with PostGIS and other OSS extensions on a compatible PostgreSQL build.
+FROM timescale/timescaledb-ha:pg16-all-oss
