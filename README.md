@@ -4,9 +4,9 @@
 
 Screen recording of the Seattle traffic map: time scrubber, blended congestion on road lines, and dual MVT layers (base + traffic).
 
-<video src="docs/demo.mp4" controls playsinline width="100%"></video>
-
-If your viewer does not show the clip, open [`docs/demo.mp4`](docs/demo.mp4) locally or browse to that path on GitHub.
+<video controls playsinline width="100%">
+  <source src="https://raw.githubusercontent.com/srinivasrk/postgis-mapbox/main/docs/demo.mp4" type="video/mp4" />
+</video>
 
 ---
 
